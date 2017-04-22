@@ -6,15 +6,5 @@ pipeline {
                 echo "Compiling..."
             }
         }
-        stage "Test" {
-            steps {
-                echo "Running tests..."
-            }
-        }
-        stage "Package" {
-            steps {
-                echo "Packaging..."
-            }
-        }
     }
 }
