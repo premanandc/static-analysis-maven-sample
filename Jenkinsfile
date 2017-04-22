@@ -17,7 +17,7 @@ pipeline {
             echo "Build success!"
         }
         always {
-            echo 'Finishing up!'
+            echo 'All done!'
         }
     }
 }
