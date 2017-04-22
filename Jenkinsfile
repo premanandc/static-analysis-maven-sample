@@ -5,11 +5,10 @@ pipeline {
             steps {
                 echo 'Compiling...'
             }
+        }
+        stage('Test') {
             steps {
                 echo 'Testing...'
-            }
-            steps {
-                echo 'Packaging...'
             }
         }
     }
