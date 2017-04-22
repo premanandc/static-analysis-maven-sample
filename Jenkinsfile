@@ -13,8 +13,11 @@ pipeline {
         }
     }
     post {
+        success {
+            echo "Build success!"
+        }
         always {
-            echo 'I will always say Hello again!'
+            echo 'Finishing up!'
         }
     }
 }
