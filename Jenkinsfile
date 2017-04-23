@@ -10,9 +10,6 @@ pipeline {
             steps {
                 echo 'Unit Testing...'
             }
-            steps {
-                echo 'More Unit Testing...'
-            }
         }
     }
     post {
