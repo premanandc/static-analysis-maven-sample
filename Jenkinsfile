@@ -4,7 +4,13 @@ def staticAnalysisJobs() {
 
     staticAnalysisChecks.collect { checks ->
         def jobs = [:]
-        jobs[checks.value] = {return { build checks.key }}
+        jobs[checks.value] = {
+            return {
+                node {
+                    echo checks.key
+                }
+            }
+        }
         jobs
     }
 }
