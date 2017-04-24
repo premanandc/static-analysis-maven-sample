@@ -18,7 +18,7 @@ node {
     }
 
 
-    parallel staticAnalysisJobs
+    parallel staticAnalysisJobs()
 
     stage('Test') {
         sh 'mvn test'
