@@ -10,4 +10,8 @@ node {
     stage('Test') {
         sh 'mvn test'
     }
+
+    stage('Package') {
+        sh 'mvn package -Dmaven.test.skip'
+    }
 }
