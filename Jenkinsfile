@@ -21,12 +21,12 @@ node {
                 },
                 PMD: {
                     node {
-                        echo 'Running huntbugs'
+                        echo 'Running PMD'
                     }
                 },
                 Findbugs: {
                     node {
-                        echo 'Running huntbugs'
+                        echo 'Running findbugs'
                     }
                 }
         )
