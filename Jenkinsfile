@@ -15,18 +15,17 @@ node {
         sh 'mvn clean compile'
     }
 
-    def jobNames = ["Checkstyle", "Huntbugs", "Findbugs", "CPD"]
-
-    def stepsForParallel = [:]
-
-    for (int i = 0; i < jobNames.size(); i++) {
-        def s = jobNames.get(i)
-        def stepName = "${s}"
-
-        stepsForParallel[stepName] = transformIntoStep(s)
-    }
-
-    parallel stepsForParallel
+    parallel(
+            Checkstyle: {
+                node {
+                    echo 'Running checkstyle'
+                }
+            },
+            Huntbugs: {
+                node {
+                    echo 'Running huntbugs'
+                }
+            })
 
     stage('Test') {
         sh 'mvn test'
