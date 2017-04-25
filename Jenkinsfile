@@ -1,11 +1,3 @@
-def transformIntoStep(inputString) {
-    return {
-        node {
-            echo "Running $inputString"
-        }
-    }
-}
-
 node {
     stage('Checkout') {
         checkout scm
@@ -15,20 +7,37 @@ node {
         sh 'mvn clean compile'
     }
 
-    parallel(
-            Checkstyle: {
-                node {
-                    echo 'Running checkstyle'
+    stage 'Static Analysis' {
+        parallel(
+                Checkstyle: {
+                    node {
+                        echo 'Running checkstyle'
+                    }
+                },
+                Huntbugs: {
+                    node {
+                        echo 'Running huntbugs'
+                    }
+                },
+                PMD: {
+                    node {
+                        echo 'Running huntbugs'
+                    }
+                },
+                Findbugs: {
+                    node {
+                        echo 'Running huntbugs'
+                    }
                 }
-            },
-            Huntbugs: {
-                node {
-                    echo 'Running huntbugs'
-                }
-            })
+        )
+    }
 
-    stage('Test') {
+    stage('Unit Test') {
         sh 'mvn test'
+    }
+
+    stage('Integration Test') {
+        sh 'mvn integration-test'
     }
 
     stage('Package') {
