@@ -7,7 +7,7 @@ node {
         sh 'mvn clean compile'
     }
 
-    stage 'Static Analysis' {
+    stage('Static Analysis') {
         parallel(
                 Checkstyle: {
                     node {
