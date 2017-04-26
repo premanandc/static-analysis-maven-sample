@@ -10,24 +10,16 @@ node {
     stage('Static Analysis') {
         parallel(
                 Checkstyle: {
-                    node {
-                        echo 'Running checkstyle'
-                    }
+                    echo 'Running checkstyle'
                 },
                 Huntbugs: {
-                    node {
-                        echo 'Running huntbugs'
-                    }
+                    echo 'Running huntbugs'
                 },
                 PMD: {
-                    node {
-                        echo 'Running PMD'
-                    }
+                    echo 'Running PMD'
                 },
                 Findbugs: {
-                    node {
-                        echo 'Running findbugs'
-                    }
+                    echo 'Running findbugs'
                 }
         )
     }
